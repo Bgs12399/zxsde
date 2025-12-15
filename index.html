@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>白光顺 - 大数据专业学生</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        :root {
+            --primary: #3498db;
+            --dark: #2c3e50;
+            --light: #f5f5f5;
+            --gray: #7f8c8d;
+        }
+
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--light);
+        }
+
+        nav {
+            background: var(--dark);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            padding: 15px 0;
+        }
+
+        .nav-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        section {
+            padding: 80px 0;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 2px;
+            background: var(--primary);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://picsum.photos/id/1005/1920/1080') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .about {
+            background: white;
+            margin-top: -20px;
+            padding: 60px 20px;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .about-text {
+            flex: 2;
+            min-width: 280px;
+        }
+
+        .about-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            padding: 5px 12px;
+            background: #e8f4fd;
+            color: var(--dark);
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .skills, .projects {
+            padding: 60px 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .card i {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .contact {
+            background: var(--dark);
+            color: white;
+            padding: 60px 20px;
+            margin-top: 20px;
+        }
+
+        .contact-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-item i {
+            margin-right: 15px;
+            color: var(--primary);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: #1a2530;
+            color: var(--gray);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <div class="nav-wrap">
+            <a href="#" class="logo">白光顺<span>Study</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#skills">技能</a></li>
+                <li><a href="#projects">项目</a></li>
+                <li><a href="#contact">联系我</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section id="home" class="hero">
+        <div>
+            <h1>你好，我是白光顺</h1>
+            <p>信息工程学部 23170402004 大数据2班 白光顺</p>
+            <a href="#projects" class="btn">查看我的项目</a>
+        </div>
+    </section>
+
+    
+    <section id="about" class="about">
+        <h2 class="section-title">关于我</h2>
+        <div class="about-content">
+            <div class="about-img">
+                <img src="a.webp" alt="个人照片">
+            </div>
+            <div class="about-text">
+                <h3>信息工程学部 23170402004 大数据2班 白光顺 大三学生</h3>
+                <p>就读于贵州中医药大学时珍学院</p>
+                <p>学习前端开发技术，热爱编程，乐于探索新技术。</p>
+               
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="skills" class="skills">
+        <h2 class="section-title">我的技能</h2>
+        <div class="card-grid">
+            <div class="card">
+                <i class="fab fa-html5"></i>
+                <h3>HTML & CSS</h3>
+                <p>掌握语义化编写</p>
+            </div>
+            <div class="card">
+                <i class="fab fa-js-square"></i>
+                <h3>JavaScript</h3>
+                <p>掌握基础语法，能完成基础交互开发</p>
+            </div>
+            
+        </div>
+    </section>
+
+    
+    <section id="projects" class="projects">
+        <h2 class="section-title">我的项目</h2>
+        <div class="card-grid">
+            <div class="card">
+                <i class="fas fa-blog"></i>
+                <h3>个人博客网站</h3>
+                <p>课程实训：HTML+CSS+JS开发的静态博客，实现文章展示、留言等功能</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-list-check"></i>
+                <h3>Vue待办清单</h3>
+                <p>个人练手：Vue3开发的待办工具，支持增删改查，本地存储数据</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>校园导航小程序</h3>
+                <p>团队实训：负责前端开发，实现校园地图、楼宇查询功能</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="contact" class="contact">
+        <h2 class="section-title">联系我</h2>
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <h3>欢迎交流学习</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>baiguangshun@example.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>138-XXXX-XXXX</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <p>github.com/baiguangshun</p>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="邮箱" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" placeholder="留言内容" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">发送</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-weixin"></i></a>
+            <a href="#"><i class="fab fa-qq"></i></a>
+        </div>
+        <p>&copy; 2025 白光顺 - 大数据专业学生</p>
+    </footer>
+
+    <script>
+        
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '60px';
+            navLinks.style.left = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.background = var(--dark);
+            navLinks.style.padding = '20px';
+        });
+
+        
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('留言发送成功！');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
